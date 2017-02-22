@@ -31,6 +31,6 @@ PREFERRED_PROVIDER_virtual/kernel = "linux-octagon"
 PREFERRED_PROVIDER_virtual/blindscan-dvbs = "octagon-blindscan-utils"
 PREFERRED_PROVIDER_virtual/blindscan-dvbc = "octagon-blindscan-utils"
 
-MACHINE_FEATURES += "alsa 3dtv switchoff hdmicec blindscan-dvbc"
+MACHINE_FEATURES += "alsa wlan 3dtv switchoff hdmicec blindscan-dvbc kernelwifi extrakernelwifi"
 
 require conf/machine/include/arm/arch-armv7a.inc
