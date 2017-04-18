@@ -1,7 +1,9 @@
 KV = "4.1.37"
-GCCREV = "5.3.0"
-SRCDATE = "20170329"
+GCCREV = "6.3.0"
+SRCDATE = "20170418"
+
+COMPATIBLE_MACHINE = "sf4008"
 
 require octagon-dvb-modules.inc
-SRC_URI[md5sum] = "1eb5d1f1ff3f450dc13e753e8c8a600f"
-SRC_URI[sha256sum] = "fa43180da1e94dd647985a3c5d1cf1ce65696291f7d5daf9e9b8a4489b72adfd"
+SRC_URI[md5sum] = "27d370f13e8afc3b360c781c751cda6e"
+SRC_URI[sha256sum] = "b049dc69530c80e22d2db6650e122ca0ee49fdafae8596f550953b3cb913c044"
