@@ -12,7 +12,7 @@ LIC_FILES_CHKSUM = "\
 DEPENDS = "zlib enchant libsoup-2.4 curl libxml2 cairo libidn gnutls gtk+ \
            gstreamer1.0 gstreamer1.0-plugins-base flex-native bison-native gperf-native sqlite3 icu"
 
-PR = "r0"
+PR = "r1"
 
 SRCREV = "${AUTOREV}"
 
@@ -70,6 +70,10 @@ do_configure_append() {
 	# somethings wrong with icu, fix it up manually
 	for makefile in $(find ${B} -name "GNUmakefile") ; do
 		sed -i s:-I/usr/include::g $makefile
+	done
+	# remove hardcoded path to /usr/bin/glib-mkenums
+	for makefile in $(find ${B} -name "GNUmakefile") ; do
+		sed -i s:/usr/bin/glib-mkenums:glib-mkenums:g $makefile
 	done
 }
 
