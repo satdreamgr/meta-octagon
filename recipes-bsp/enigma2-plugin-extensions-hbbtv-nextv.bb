@@ -2,7 +2,6 @@ DESCRIPTION = "E2 HbbTV Plugin"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
-require conf/license/license-close.inc
 
 COMPATIBLE_MACHINE = "^(sf4008)$"
 PACKAGE_ARCH = "${MACHINE_ARCH}"

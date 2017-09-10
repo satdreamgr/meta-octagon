@@ -6,7 +6,6 @@ RDEPENDS_${PN} = "ncurses"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 LICENSE = "CLOSED"
-require conf/license/license-close.inc
 
 PACKAGES = "octagon-blindscan-dvbc-utils octagon-blindscan-dvbc-utils-dbg"
 
