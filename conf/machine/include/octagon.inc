@@ -8,6 +8,7 @@ IMAGEVERSION[vardepsexclude] = "DATE"
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = "\
     octagon-dvb-modules-${MACHINE} \
+    octagon-initrd-${MACHINE} \
     "
 
 MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS = "\
