@@ -36,3 +36,4 @@ FILES_${PN}-dev = "/usr/include/*"
 RPROVIDES_${PN} = "libnxpl.so libnexus.so libv3ddriver.so libnxclient.so libGLESv2.so libEGL.so"
 
 INSANE_SKIP_${PN} += "already-stripped dev-so"
+INHIBIT_PACKAGE_STRIP = "1"
