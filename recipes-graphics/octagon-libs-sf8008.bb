@@ -1,0 +1,6 @@
+SRCDATE = "20180927"
+
+require octagon-libs.inc
+
+SRC_URI[md5sum] = "dc849fc7152e17910cd59975d0d8b736"
+SRC_URI[sha256sum] = "2639fc72f4048e273b12fc0d5665a64772baa36ef384c547f368812f52d10c2b"
