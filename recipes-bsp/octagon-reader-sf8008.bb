@@ -8,7 +8,7 @@ RDEPENDS_${PN} = "libsdl"
 
 COMPATIBLE_MACHINE = "^(sf8008)$"
 
-SRCDATE = "20181121"
+SRCDATE = "20181101"
 
 PV = "${SRCDATE}"
 PR = "r0"
