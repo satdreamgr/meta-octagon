@@ -1,7 +1,8 @@
 #!/bin/sh
 
-if [ "$1x" = "stopx" ]
-then
+runlevel=runlevel | cut -d' ' -f2
+
+if [ "$runlevel" != "0" ] ; then
 	exit 0
 fi
 

@@ -9,7 +9,7 @@ RDEPENDS_${PN} = "harfbuzz"
 SRCDATE = "20180823"
 
 PV = "${SRCDATE}"
-PR = "r1"
+PR = "r2"
 
 INITSCRIPT_NAME = "suspend"
 INITSCRIPT_PARAMS = "start 89 0 ."
