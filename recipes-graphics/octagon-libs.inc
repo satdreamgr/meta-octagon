@@ -21,11 +21,10 @@ SRC_URI = "http://source.mynonpublic.com/octagon/${MACHINE}-hilib-${SRCDATE}.tar
 
 S = "${WORKDIR}/hilib"
 
-do_configure() {
-}
-
-do_compile() {
-}
+# The driver is a set of binary libraries to install
+# there's nothing to configure or compile
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
 	install -d ${D}${libdir}

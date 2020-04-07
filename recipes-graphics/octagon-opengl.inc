@@ -13,25 +13,32 @@ SRC_URI = "http://source.mynonpublic.com/octagon/${MACHINE}-opengl-${SRCDATE}.ta
 
 S = "${WORKDIR}/usr"
 
-do_configure() {
-}
+# The driver is a set of binary libraries to install
+# there's nothing to configure or compile
+do_configure[noexec] = "1"
 
-do_compile() {
+# Generate a mali rules script
+do_compile_append () {
+	cat > 50-mali.rules << EOF
+KERNEL=="mali0", MODE="0660", GROUP="video"
+EOF
 }
 
 do_install() {
     install -d ${D}${libdir}
-    install -m 0755 ${S}/lib/libMali.so ${D}${libdir}/
-    ln -s libMali.so ${D}${libdir}/libGLESv2.so.2.0
-    ln -s libGLESv2.so.2.0 ${D}${libdir}/libGLESv2.so.2
-    ln -s libGLESv2.so.2 ${D}${libdir}/libGLESv2.so
-    ln -s libMali.so ${D}${libdir}/libGLESv1_CM.so.1.1
-    ln -s libGLESv1_CM.so.1.1 ${D}${libdir}/libGLESv1_CM.so.1
-    ln -s libGLESv1_CM.so.1 ${D}${libdir}/libGLESv1_CM.so
-    ln -s libMali.so ${D}${libdir}/libEGL.so.1.4
-    ln -s libEGL.so.1.4 ${D}${libdir}/libEGL.so.1
-    ln -s libEGL.so.1 ${D}${libdir}/libEGL.so
-    install -d ${D}/${includedir}
+    install -d ${D}${sysconfdir}/udev/rules.d
+    install -m 0755 ${S}/lib/libMali.so ${D}${libdir}
+    ln -sf libMali.so ${D}${libdir}/libGLESv2.so.2.0
+    ln -sf libGLESv2.so.2.0 ${D}${libdir}/libGLESv2.so.2
+    ln -sf libGLESv2.so.2 ${D}${libdir}/libGLESv2.so
+    ln -sf libMali.so ${D}${libdir}/libGLESv1_CM.so.1.1
+    ln -sf libGLESv1_CM.so.1.1 ${D}${libdir}/libGLESv1_CM.so.1
+    ln -sf libGLESv1_CM.so.1 ${D}${libdir}/libGLESv1_CM.so
+    ln -sf libMali.so ${D}${libdir}/libEGL.so.1.4
+    ln -sf libEGL.so.1.4 ${D}${libdir}/libEGL.so.1
+    ln -sf libEGL.so.1 ${D}${libdir}/libEGL.so
+    install -m 0644 ${S}/50-mali.rules ${D}${sysconfdir}/udev/rules.d/50-mali.rules
+    install -d ${D}${includedir}
     install -m 0644 ${S}/include/hi_dbe.h ${D}${includedir}/
     for d in EGL GLES GLES2 KHR; do
         install -d ${D}${includedir}/$d
@@ -41,7 +48,7 @@ do_install() {
     done
 }
 
-FILES_${PN} = "/usr/lib/*"
-FILES_${PN}-dev = "/usr/include/*"
+FILES_${PN} = "${libdir}/* /etc/udev/rules.d/50-mali.rules"
+FILES_${PN}-dev = "${includedir}/*"
 
-INSANE_SKIP_${PN} += "already-stripped dev-so"
+INSANE_SKIP_${PN} += "already-stripped dev-so ldflags"

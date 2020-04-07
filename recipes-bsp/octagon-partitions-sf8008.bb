@@ -2,25 +2,20 @@ SUMMARY = "SF8008 partitions files"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
-require conf/license/license-close.inc
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit deploy
 
-SRCDATE = "20190917"
+SRCDATE = "20200407"
 PR = "${SRCDATE}"
 
 S = "${WORKDIR}/patitions"
 
-SRC_URI = "http://source.mynonpublic.com/octagon/${MACHINE}-partitions-${SRCDATE}.zip"
+SRC_URI = "http://define-sw.dyndns.tv/openatv/openpli/${MACHINE}-partitions-${SRCDATE}.zip"
 
 ALLOW_EMPTY_${PN} = "1"
-
-do_install() {
-    install -d ${D}/usr/share
-    install -m 0644 ${S}/bootargs.bin ${D}/usr/share/bootargs.bin
-    install -m 0644 ${S}/fastboot.bin ${D}/usr/share/fastboot.bin
-}
+do_configure[nostamp] = "1"
+do_install[noexec] = "1"
 
 FILES_${PN} = "/usr/share"
 
@@ -39,7 +34,7 @@ do_deploy() {
 
 addtask deploy before do_build after do_install
 
-SRC_URI[md5sum] = "06b24e90a4ac5c0efd96aaa551044714"
-SRC_URI[sha256sum] = "1c3e15bac9068f2f37336f0b05464bd0adc71d1fed7a423c5b7b7645ec58db7c"
+SRC_URI[md5sum] = "b64fa91dcbc31bea9e40d68061a4fa28"
+SRC_URI[sha256sum] = "82f2c8f60a19241b8218586da76a312ac543b3325b83d75b3c53a9834621ee39"
 
 INSANE_SKIP_${PN} += "already-stripped"
