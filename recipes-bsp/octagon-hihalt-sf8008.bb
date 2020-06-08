@@ -15,7 +15,7 @@ INITSCRIPT_NAME = "suspend"
 INITSCRIPT_PARAMS = "start 89 0 ."
 inherit update-rc.d
 
-SRC_URI  = "http://source.mynonpublic.com/octagon/${MACHINE}-hihalt-${SRCDATE}.tar.gz \
+SRC_URI  = "http://define-sw.dyndns.tv/openatv/openpli/${MACHINE}-hihalt-${SRCDATE}.tar.gz \
     file://suspend.sh \
 "
 
