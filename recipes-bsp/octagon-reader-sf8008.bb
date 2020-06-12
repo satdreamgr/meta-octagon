@@ -8,7 +8,7 @@ RDEPENDS_${PN} = "libsdl"
 
 COMPATIBLE_MACHINE = "^(sf8008)$"
 
-SRCDATE = "20200108"
+SRCDATE = "20200612"
 
 PV = "${SRCDATE}"
 PR = "r0"
@@ -27,5 +27,5 @@ do_package_qa() {
 
 FILES_${PN}  = "${bindir}/libreader"
 
-SRC_URI[md5sum] = "4599e059a72a22a4125242fe7c930b6e"
-SRC_URI[sha256sum] = "ea2f80dfe7e3718a20bed52c75425ed47adaf06be2364ee394bd74b25c8ee39d"
+SRC_URI[md5sum] = "9a036c2638709842956a65350769c335"
+SRC_URI[sha256sum] = "29728c136ccc8a170054f0e4ea8b6ce4dfa35f58d0c9970c84e8c1e72aa9a110"
