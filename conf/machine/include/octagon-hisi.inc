@@ -100,3 +100,7 @@ IMAGE_CMD_octagonemmc_append = "\
     rm -Rf ${IMAGEDIR}; \
     rm -Rf ${DEPLOY_DIR_IMAGE}/userdata; \
     "
+
+IMAGE_CMD_prepend = " \
+    rm -Rf ${IMAGE_ROOTFS}/tmp/*; \
+    "
