@@ -10,7 +10,7 @@ SRCDATE = "20181224"
 
 inherit kernel machine_kernel_pr
 
-MACHINE_KERNEL_PR_append = "r24"
+MACHINE_KERNEL_PR_append = "r25"
 
 SRC_URI[md5sum] = "ad7eab17a5071a0d5f9ff44eb44e027d"
 SRC_URI[sha256sum] = "0654d5aa21c51eaea46f7203014afe60052ec0990a92b9e289e1ca8a2793907c"
@@ -66,7 +66,22 @@ kernel_do_install_append() {
 }
 
 python __anonymous () {
-    d.setVar('pkg_postinst_kernel-image-uimage', "");
+    d.setVar('pkg_postinst_kernel-image-uimage', """set +e
+if [ -n "$D" ]; then
+  true
+else
+  if [ -f /tmp/uImage-4.4.35 ] ; then
+    kernel=`cat /proc/cmdline | tr ' ' '\\n' | grep kernel= | cut -f2 -d'='`
+    if [ -z "$kernel" ] ; then
+      echo "Failed to detect kernel using /proc/cmdline!"
+    else
+      echo "Writing kernel file /tmp/uImage-4.4.35 to $kernel"
+      dd if=/tmp/uImage-4.4.35 of=$kernel
+    fi
+  fi
+fi
+set -e
+""");
 }
 
 pkg_postinst_kernel-image () {
